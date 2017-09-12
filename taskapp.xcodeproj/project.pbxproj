@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4042DBC31F67B15D009CAC66 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4042DBC21F67B15D009CAC66 /* InputViewController.swift */; };
 		4070DA331F677E8C005C7DC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070DA321F677E8C005C7DC7 /* AppDelegate.swift */; };
 		4070DA351F677E8C005C7DC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070DA341F677E8C005C7DC7 /* ViewController.swift */; };
 		4070DA381F677E8C005C7DC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4070DA361F677E8C005C7DC7 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4042DBC21F67B15D009CAC66 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		4070DA2F1F677E8C005C7DC7 /* taskapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taskapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4070DA321F677E8C005C7DC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4070DA341F677E8C005C7DC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				4070DA321F677E8C005C7DC7 /* AppDelegate.swift */,
 				4070DA341F677E8C005C7DC7 /* ViewController.swift */,
+				4042DBC21F67B15D009CAC66 /* InputViewController.swift */,
 				4070DA361F677E8C005C7DC7 /* Main.storyboard */,
 				4070DA391F677E8C005C7DC7 /* Assets.xcassets */,
 				4070DA3B1F677E8C005C7DC7 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4042DBC31F67B15D009CAC66 /* InputViewController.swift in Sources */,
 				4070DA351F677E8C005C7DC7 /* ViewController.swift in Sources */,
 				4070DA331F677E8C005C7DC7 /* AppDelegate.swift in Sources */,
 			);
@@ -299,6 +303,7 @@
 				4070DA431F677E8C005C7DC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
