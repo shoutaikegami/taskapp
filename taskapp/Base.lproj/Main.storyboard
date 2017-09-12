@@ -144,6 +144,11 @@
                             <constraint firstItem="R7L-im-exA" firstAttribute="leading" secondItem="7Vp-gM-cRk" secondAttribute="leadingMargin" id="rGm-b5-T6A"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="IDX-OI-u0V" id="lxE-Ui-WhV"/>
+                        <outlet property="datePicker" destination="B2u-Wu-fH6" id="U3I-RL-0GD"/>
+                        <outlet property="titleTextField" destination="lHt-Qf-mme" id="lFQ-Zs-z4R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfy-KC-6kE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
