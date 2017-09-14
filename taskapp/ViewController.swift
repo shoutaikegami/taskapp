@@ -10,9 +10,10 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Realmインスタンスを取得する
     let realm = try! Realm()
@@ -22,12 +23,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 以降内容をアップデートするとリスト内は自動的に更新される。
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
+    // 検索結果配列
+    var resultArray = try! Realm().objects(Task.self)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
+        
+        // 何も入力されていなくてもReturnキーを押せるようにする
+        searchBar.enablesReturnKeyAutomatically = false
+        
+        // 検索結果配列にデータをコピーする
+        resultArray = taskArray
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,6 +131,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 入力画面から戻ってきた時に TableView を更新させる
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    // 検索ボタン押下時の呼び出しメソッド
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let results = realm.objects(Task.self).filter("category == %@", searchBar.text!)
+        if results.count != 0 {
+            taskArray = results
+        } else {
+            taskArray = resultArray
+        }
+        
         tableView.reloadData()
     }
 
