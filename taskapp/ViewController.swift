@@ -137,11 +137,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 検索ボタン押下時の呼び出しメソッド
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let results = realm.objects(Task.self).filter("category == %@", searchBar.text!)
-        if results.count != 0 {
-            taskArray = results
-        } else {
+        if results.isEmpty {
             taskArray = resultArray
+        } else {
+            for result in results {
+                if result.category == "" {
+                    taskArray = resultArray
+                } else {
+                    taskArray = results
+                }
+            }
         }
+        //if results.count != 0 {
+            //taskArray = results
+        //} else if results.isEmpty {
+            //taskArray = resultArray
+        //} else {
+            //taskArray = resultArray
+        //}
         
         tableView.reloadData()
     }
