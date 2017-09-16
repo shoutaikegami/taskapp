@@ -23,8 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 以降内容をアップデートするとリスト内は自動的に更新される。
     var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
-    // 検索結果配列
-    var resultArray = try! Realm().objects(Task.self)
+    // キャンセルボタン用配列
+    var copyArray = try! Realm().objects(Task.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +34,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         searchBar.delegate = self
         
-        // 何も入力されていなくてもReturnキーを押せるようにする
-        searchBar.enablesReturnKeyAutomatically = false
-        
-        // 検索結果配列にデータをコピーする
-        resultArray = taskArray
+        // キャンセルボタン用配列にデータをコピーする
+        copyArray = taskArray
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,28 +134,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // 検索ボタン押下時の呼び出しメソッド
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let results = realm.objects(Task.self).filter("category == %@", searchBar.text!)
-        if results.isEmpty {
-            taskArray = resultArray
-        } else {
-            for result in results {
-                if result.category == "" {
-                    taskArray = resultArray
-                } else {
-                    taskArray = results
-                }
-            }
-        }
-        //if results.count != 0 {
-            //taskArray = results
-        //} else if results.isEmpty {
-            //taskArray = resultArray
-        //} else {
-            //taskArray = resultArray
-        //}
+        
+        taskArray = results
         
         tableView.reloadData()
     }
-
+    
+    // キャンセルボタン押下時の呼び出しメソッド
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        taskArray = copyArray
+        
+        tableView.reloadData()
+    }
 
 }
 
